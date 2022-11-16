@@ -4,4 +4,4 @@ export type Journal = {
   text: string;
   userId: string;
   id: string;
-}
+};

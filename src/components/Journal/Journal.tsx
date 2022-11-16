@@ -1,28 +1,28 @@
-import { Dispatch, FunctionComponent, SetStateAction, useState } from 'react'
-import { Journal } from '../../domain/types/Journal'
-import { createNewJournal } from '../../domain/data/journals'
-import { v4 as uuidv4 } from 'uuid'
-import './journal.scss'
+import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
+import { Journal } from "../../domain/types/Journal";
+import { createNewJournal } from "../../domain/data/journals";
+import { v4 as uuidv4 } from "uuid";
+import "./journal.scss";
 
 type JournalProps = {
-  journals: Journal[]
-  user: any | null
-  currentMoonPhase: string
-  updateJournals: Dispatch<SetStateAction<Journal[]>>
-}
+  journals: Journal[];
+  user: any | null;
+  currentMoonPhase: string;
+  updateJournals: Dispatch<SetStateAction<Journal[]>>;
+};
 
 type JournalEntryProps = {
-  moonPhase: string
-  date: string
-  text: string
-}
+  moonPhase: string;
+  date: string;
+  text: string;
+};
 
 type NewJournalModalProps = {
-  isModalOpen: boolean
-  closeModal: () => void
-  handleSubmit: (e: any) => void
-  onChange: (e: any) => void
-}
+  isModalOpen: boolean;
+  closeModal: () => void;
+  handleSubmit: (e: any) => void;
+  onChange: (e: any) => void;
+};
 
 const JournalEntry: FunctionComponent<JournalEntryProps> = (
   props: JournalEntryProps
@@ -34,8 +34,8 @@ const JournalEntry: FunctionComponent<JournalEntryProps> = (
       </p>
       <p className="text">{props.text}</p>
     </div>
-  )
-}
+  );
+};
 
 const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
   props: NewJournalModalProps
@@ -43,7 +43,7 @@ const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
   return (
     <div
       className="bgModal"
-      style={{ visibility: props.isModalOpen ? 'visible' : 'hidden' }}
+      style={{ visibility: props.isModalOpen ? "visible" : "hidden" }}
     >
       <div className="modalContent">
         <div className="close" onClick={props.closeModal}>
@@ -55,7 +55,7 @@ const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
             name="journalText"
             autoFocus
             placeholder="What's on your mind..."
-            onChange={e => props.onChange(e.target.value)}
+            onChange={(e) => props.onChange(e.target.value)}
           />
           <button
             className="text createJournalButton"
@@ -66,14 +66,14 @@ const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const JournalPage: FunctionComponent<JournalProps> = (
   props: JournalProps
 ) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [newJournalText, setNewJournalText] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newJournalText, setNewJournalText] = useState("");
 
   const handleSubmit = async () => {
     // create journal object
@@ -83,14 +83,14 @@ export const JournalPage: FunctionComponent<JournalProps> = (
       text: newJournalText,
       userId: props.user.uid,
       id: uuidv4(),
-    }
+    };
     // add to firestore
-    await createNewJournal(newJournal)
+    await createNewJournal(newJournal);
     // update journals
-    props.updateJournals([...props.journals, newJournal])
+    props.updateJournals([...props.journals, newJournal]);
     // close modal
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   // if no user is signed in, it should show "must sign in to use journal" message
   if (!props.user) {
@@ -98,7 +98,7 @@ export const JournalPage: FunctionComponent<JournalProps> = (
       <div className="textContainer">
         <p className="text">Login to create a journal entry.</p>
       </div>
-    )
+    );
   }
 
   // if signed in but no journal entries, show 'no journal entries' message
@@ -116,7 +116,7 @@ export const JournalPage: FunctionComponent<JournalProps> = (
       </div>
       <div className="journalsContainer">
         {props.journals.length ? (
-          props.journals.map(journal => {
+          props.journals.map((journal) => {
             return (
               <JournalEntry
                 key={journal.id}
@@ -124,7 +124,7 @@ export const JournalPage: FunctionComponent<JournalProps> = (
                 text={journal.text}
                 moonPhase={journal.moonPhase}
               />
-            )
+            );
           })
         ) : (
           <p className="text">
@@ -140,5 +140,5 @@ export const JournalPage: FunctionComponent<JournalProps> = (
         onChange={setNewJournalText}
       />
     </div>
-  )
-}
+  );
+};

@@ -1,13 +1,16 @@
 import { MoonData } from "../types/MoonData";
-import SunCalc from 'suncalc';
+import SunCalc from "suncalc";
 
 export const fetchMoonData = () => {
   const date = new Date();
   const rawMoonData = SunCalc.getMoonIllumination(date);
   const phase = getMoonPhase(rawMoonData.phase);
-  const moonData: MoonData = {illuminated: Math.round(rawMoonData.fraction * 100), phase}
+  const moonData: MoonData = {
+    illuminated: Math.round(rawMoonData.fraction * 100),
+    phase,
+  };
   return moonData;
-}
+};
 
 const getMoonPhase = (phaseAsFraction: number) => {
   let moonPhase;
@@ -28,7 +31,7 @@ const getMoonPhase = (phaseAsFraction: number) => {
   } else if (phaseAsFraction > 0.8 && phaseAsFraction < 1) {
     moonPhase = "Waning Crescent";
   } else {
-    throw(new Error('Invalid value'))
+    throw new Error("Invalid value");
   }
   return moonPhase;
-}
+};
