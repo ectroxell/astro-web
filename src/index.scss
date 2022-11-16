@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&family=Shrikhand&display=swap');
+
+.titleText {
+  font-family: 'Shrikhand', cursive;
+  font-size: 24px;
+}
+
+.text {
+  font-family: 'Inconsolata', monospace;
+}
+
+
+html, body, #root {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  input {
+    font-family: inherit;
+  }
+}
+    
+              

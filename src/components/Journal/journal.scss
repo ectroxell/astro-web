@@ -1,0 +1,92 @@
+.journalsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 1000px;
+}
+
+.journalEntry {
+  margin-bottom: 42px;
+  padding: 12px;
+  border: #E1E1E6 solid 1px;
+}
+
+.textContainer {
+  margin-left: 25%;
+}
+
+.journalHeader {
+  color: #E1E1E6;
+  font-size: 28px;
+  margin-bottom: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.journalPageContainer {
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  position: absolute;
+  top: 86px;
+
+}
+
+.journalTitle {
+  font-size: 20px;
+}
+
+.newJournalButton {
+  width: 50%;
+}
+
+.createJournalButton {
+  width: 100px;
+}
+
+.bgModal {
+  width: 100%;
+  height: 1000px;
+  background-color: rbga(0,0,0,0.7);
+  position: absolute;
+  top: -170px;
+  display: flex;
+  align-items: center;
+  margin-left: 9%;
+}
+
+.modalContent {
+  width: 550px;
+  height: 350px;
+  background-color: lavender;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  .titleText {
+    color: white;
+    -webkit-text-stroke: 1.5px;
+    -webkit-text-stroke-color: darkslateblue;
+    font-size: 30px;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  color: darkslateblue;
+}
+
+textarea {
+  height: 200px;
+  width: 400px;
+  display: block;
+  margin: 15px auto;
+}
