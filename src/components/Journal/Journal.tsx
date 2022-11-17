@@ -104,41 +104,43 @@ export const JournalPage: FunctionComponent<JournalProps> = (
   // if signed in but no journal entries, show 'no journal entries' message
   // if the user has any journal entries, they should be displayed
   return (
-    <div className="journalPageContainer">
-      <div className="titleText journalHeader">
-        <span>{props.user.displayName}'s Moon Journal 🌙</span>
-        <button
-          className="text newJournalButton"
-          onClick={() => setIsModalOpen(true)}
-        >
-          New Entry
-        </button>
-      </div>
-      <div className="journalsContainer">
-        {props.journals.length ? (
-          props.journals.map((journal) => {
-            return (
-              <JournalEntry
-                key={journal.id}
-                date={journal.date.toLocaleString()}
-                text={journal.text}
-                moonPhase={journal.moonPhase}
-              />
-            );
-          })
-        ) : (
-          <p className="text">
-            You do not have any journal entries. Create your first journal entry
-            here!
-          </p>
-        )}
-      </div>
+    <>
       <NewJournalModal
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
         handleSubmit={handleSubmit}
         onChange={setNewJournalText}
       />
-    </div>
+      <div className="journalPageContainer">
+        <div className="titleText journalHeader">
+          <span>{props.user.displayName}'s Moon Journal 🌙</span>
+          <button
+            className="text newJournalButton"
+            onClick={() => setIsModalOpen(true)}
+          >
+            New Entry
+          </button>
+        </div>
+        <div className="journalsContainer">
+          {props.journals.length ? (
+            props.journals.map((journal) => {
+              return (
+                <JournalEntry
+                  key={journal.id}
+                  date={journal.date.toLocaleString()}
+                  text={journal.text}
+                  moonPhase={journal.moonPhase}
+                />
+              );
+            })
+          ) : (
+            <p className="text">
+              You do not have any journal entries. Create your first journal
+              entry here!
+            </p>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
