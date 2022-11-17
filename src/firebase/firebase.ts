@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDf6W8tb_c2bixbgC-5vcVsvgkUM3LWMJc",
-  authDomain: "astro-react-c12a5.firebaseapp.com",
-  projectId: "astro-react-c12a5",
-  storageBucket: "astro-react-c12a5.appspot.com",
-  messagingSenderId: "217366656751",
-  appId: "1:217366656751:web:008a7e61f64382d44c4d1a",
-  measurementId: "G-ZY653BQKF3",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
