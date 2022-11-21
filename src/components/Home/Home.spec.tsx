@@ -1,14 +1,18 @@
-import { render } from '@testing-library/react'
-import { Home } from './Home'
+import { render, screen } from "@testing-library/react";
+import { Home } from "./Home";
 
-describe('Home', () => {
-  const mockUser = { displayName: 'Alfred' }
-  const mockMoonData = { illuminated: 38, phase: 'full' }
-  it('should render', async () => {
-    const { findByText } = render(
-      <Home moonData={mockMoonData} user={mockUser} />
-    )
+describe("Home", () => {
+  const mockUser = { displayName: "Alfred" };
+  const mockMoonData = { illuminated: 38, phase: "full" };
+  it("should render", async () => {
+    render(<Home moonData={mockMoonData} user={mockUser} />);
 
-    expect(await findByText('Welcome to Moonology')).toBeInTheDocument()
+    expect(await screen.findByText("Welcome to Moonology")).toBeInTheDocument();
+  });
+
+  it("should display moon data when logged out", async () => {
+    render(<Home moonData={mockMoonData} user={null} />);
+
+    expect(await screen.findByText(`The moon is ${mockMoonData.illuminated}% illuminated and in the ${mockMoonData.phase} phase.`)).toBeInTheDocument();
   })
-})
+});
