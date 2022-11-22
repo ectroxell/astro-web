@@ -37,7 +37,10 @@
 
 .createJournalButton {
   width: 100px;
-  
+}
+
+.journalPrompt {
+  font-style: italic;
 }
 
 .bgModal {
@@ -64,6 +67,15 @@
     -webkit-text-stroke: 1.5px;
     -webkit-text-stroke-color: darkslateblue;
     font-size: 30px;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  .text {
+    color: darkslateblue;
+    font-style: italic;
   }
 }
 
