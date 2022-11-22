@@ -113,9 +113,9 @@ export const JournalPage: FunctionComponent<JournalProps> = (
       />
       <div className="journalPageContainer">
         <div className="titleText journalHeader">
-          <span>{props.user.displayName}'s Moon Journal 🌙</span>
+          <span>{props.user.displayName}'s Moon Journal</span>
           <button
-            className="text newJournalButton"
+            className="text"
             onClick={() => setIsModalOpen(true)}
           >
             New Entry
