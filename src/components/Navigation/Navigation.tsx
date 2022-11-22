@@ -16,6 +16,8 @@ import { Journal } from "../../domain/types/Journal";
 import { getJournalsByUserId } from "../../domain/data/journals";
 import { MoonData } from "../../domain/types/MoonData";
 import { fetchMoonData } from "../../domain/data/moon-phase";
+import { Rituals } from "../Rituals/Rituals";
+import { Learn } from "../Learn/Learn";
 
 export const NavigationBar: FunctionComponent = () => {
   const auth = getAuth(app);
@@ -71,12 +73,8 @@ export const NavigationBar: FunctionComponent = () => {
               />
             }
           />
-          {/* <Route path="/rituals">
-            <Rituals />
-          </Route>
-          <Route path="/learn">
-            <Learn />
-          </Route> */}
+          <Route path="/rituals" element={<Rituals/>}/>
+          <Route path="/learn" element={<Learn/>}/>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
