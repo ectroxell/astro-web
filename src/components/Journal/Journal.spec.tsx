@@ -43,7 +43,7 @@ describe("JournalPage", () => {
     );
 
     expect(
-      screen.getByText(`${user.displayName}'s Moon Journal 🌙`)
+      screen.getByText(`${user.displayName}'s Moon Journal`)
     ).toBeInTheDocument();
     expect(screen.getByText(journals[0].text)).toBeInTheDocument();
   });

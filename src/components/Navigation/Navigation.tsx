@@ -41,7 +41,7 @@ export const NavigationBar: FunctionComponent = () => {
         <nav>
           <ul className="navLinksContainer titleText">
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/journal">Journal</Link>
@@ -57,7 +57,7 @@ export const NavigationBar: FunctionComponent = () => {
 
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={<Home moonData={moonData} user={user} />}
           />
           <Route
@@ -77,7 +77,7 @@ export const NavigationBar: FunctionComponent = () => {
           <Route path="/learn">
             <Learn />
           </Route> */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
