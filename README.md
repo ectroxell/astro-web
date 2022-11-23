@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 0.0.2 Release notes:
+- Show moon data when logged out
+- Optimize styling for mobile use
+- Create 'come back soon' placeholder for Learn and Rituals
+- Show journal prompt based on moon phase
+
 ## 0.0.1 Release notes:
 - Display moon data on on home page
 - Create navigation bar
