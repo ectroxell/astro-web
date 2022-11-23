@@ -1,4 +1,4 @@
-import { JournalPrompts } from "../data/journal-prompts";
+import { JournalPrompt } from "../data/journal-prompts";
 
 export type Journal = {
   date: Date;
@@ -6,5 +6,5 @@ export type Journal = {
   text: string;
   userId: string;
   id: string;
-  journalPrompt?: JournalPrompts; 
+  journalPrompt?: JournalPrompt;
 };

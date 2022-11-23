@@ -3,12 +3,13 @@ import { Journal } from "../../domain/types/Journal";
 import { createNewJournal } from "../../domain/data/journals";
 import { v4 as uuidv4 } from "uuid";
 import "./journal.scss";
-import { JournalPrompts } from "../../domain/data/journal-prompts";
+import { JournalPrompt } from "../../domain/data/journal-prompts";
 
 type JournalProps = {
   journals: Journal[];
   user: any | null;
   currentMoonPhase: string;
+  journalPrompt?: JournalPrompt;
   updateJournals: Dispatch<SetStateAction<Journal[]>>;
 };
 
@@ -16,12 +17,14 @@ type JournalEntryProps = {
   moonPhase: string;
   date: string;
   text: string;
-  prompt?: JournalPrompts;
+  prompt?: JournalPrompt;
 };
 
 type NewJournalModalProps = {
   isModalOpen: boolean;
   currentMoonPhase: string;
+  journalPrompt?: JournalPrompt;
+  journalText: string;
   closeModal: () => void;
   handleSubmit: (e: any) => void;
   onChange: (e: any) => void;
@@ -46,10 +49,6 @@ const JournalEntry: FunctionComponent<JournalEntryProps> = (
 const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
   props: NewJournalModalProps
 ) => {
-  // get journal prompt function
-  // takes moon phase which is passed down as a prop
-  // gets journal prompt enum that matches and returns it
-
   return (
     <div
       className="bgModal"
@@ -61,11 +60,12 @@ const NewJournalModal: FunctionComponent<NewJournalModalProps> = (
         </span>
         <div className="modalHeader">
           <span className="titleText">New Journal Entry</span>
-          <span className="text">this is where the prompt will be</span>
+          <span className="text">{props.journalPrompt}</span>
         </div>
         <div>
           <textarea
             name="journalText"
+            value={props.journalText}
             autoFocus
             placeholder="What's on your mind..."
             onChange={(e) => props.onChange(e.target.value)}
@@ -89,23 +89,21 @@ export const JournalPage: FunctionComponent<JournalProps> = (
   const [newJournalText, setNewJournalText] = useState("");
 
   const handleSubmit = async () => {
-    // create journal object
     const newJournal: Journal = {
       date: new Date(),
       moonPhase: props.currentMoonPhase,
       text: newJournalText,
       userId: props.user.uid,
       id: uuidv4(),
+      journalPrompt: props.journalPrompt,
     };
-    // add to firestore
+
     await createNewJournal(newJournal);
-    // update journals
     props.updateJournals([...props.journals, newJournal]);
-    // close modal
+    setNewJournalText("");
     setIsModalOpen(false);
   };
 
-  // if no user is signed in, it should show "must sign in to use journal" message
   if (!props.user) {
     return (
       <div className="textContainer">
@@ -114,8 +112,6 @@ export const JournalPage: FunctionComponent<JournalProps> = (
     );
   }
 
-  // if signed in but no journal entries, show 'no journal entries' message
-  // if the user has any journal entries, they should be displayed
   return (
     <>
       <NewJournalModal
@@ -123,6 +119,8 @@ export const JournalPage: FunctionComponent<JournalProps> = (
         closeModal={() => setIsModalOpen(false)}
         handleSubmit={handleSubmit}
         currentMoonPhase={props.currentMoonPhase}
+        journalPrompt={props.journalPrompt}
+        journalText={newJournalText}
         onChange={setNewJournalText}
       />
       <div className="journalPageContainer">
@@ -148,7 +146,7 @@ export const JournalPage: FunctionComponent<JournalProps> = (
           ) : (
             <p className="text">
               You do not have any journal entries. Create your first journal
-              entry here!
+              entry now!
             </p>
           )}
         </div>
