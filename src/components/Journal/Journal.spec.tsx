@@ -70,7 +70,7 @@ describe("JournalPage", () => {
 
     expect(
       screen.getByText(
-        "You do not have any journal entries. Create your first journal entry here!"
+        "You do not have any journal entries. Create your first journal entry now!"
       )
     ).toBeInTheDocument();
   });
