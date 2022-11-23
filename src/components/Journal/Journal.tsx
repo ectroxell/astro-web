@@ -116,7 +116,10 @@ export const JournalPage: FunctionComponent<JournalProps> = (
     <>
       <NewJournalModal
         isModalOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
+        closeModal={() => {
+          setNewJournalText("");
+          setIsModalOpen(false);
+        }}
         handleSubmit={handleSubmit}
         currentMoonPhase={props.currentMoonPhase}
         journalPrompt={props.journalPrompt}

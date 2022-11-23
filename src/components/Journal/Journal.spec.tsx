@@ -144,6 +144,33 @@ describe("JournalPage", () => {
       expect(screen.getByText(JournalPrompt.FirstQuarter)).toBeInTheDocument();
     });
 
+    it("should clear journal entry text on close", () => {
+      render(
+        <JournalPage
+          user={user}
+          journals={journals}
+          currentMoonPhase={moonPhase}
+          updateJournals={mockUpdateJournals}
+          journalPrompt={JournalPrompt.FirstQuarter}
+        />
+      );
+      const journalText = "this is my newest journal entry";
+
+      const newEntryButton = screen.getByRole("button", { name: "New Entry" });
+      fireEvent.click(newEntryButton);
+
+      const inputBox = screen.getByRole("textbox");
+      fireEvent.click(inputBox);
+      fireEvent.change(inputBox, { target: { value: journalText } });
+
+      const closeButton = screen.getByText("+");
+      fireEvent.click(closeButton);
+
+      fireEvent.click(newEntryButton);
+
+      expect(screen.queryByDisplayValue(journalText)).not.toBeInTheDocument();
+    });
+
     it.skip("should add new journal and close modal when submit button is pressed", async () => {
       render(
         <JournalPage
