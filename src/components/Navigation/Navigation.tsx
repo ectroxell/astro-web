@@ -15,7 +15,7 @@ import { app } from "../../firebase/firebase";
 import { Journal } from "../../domain/types/Journal";
 import { getJournalsByUserId } from "../../domain/data/journals";
 import { MoonData } from "../../domain/types/MoonData";
-import { fetchMoonData } from "../../domain/data/moon-phase";
+import { fetchMoonData } from "../../domain/data/get-moon-phase";
 import { Rituals } from "../Rituals/Rituals";
 import { Learn } from "../Learn/Learn";
 
@@ -69,6 +69,7 @@ export const NavigationBar: FunctionComponent = () => {
                 journals={journals}
                 user={user}
                 currentMoonPhase={moonData.phase}
+                journalPrompt={moonData.journalPrompt}
                 updateJournals={setJournals}
               />
             }

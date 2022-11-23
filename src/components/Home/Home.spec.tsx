@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
+import { JournalPrompt } from "../../domain/data/journal-prompts";
+import { MoonPhase } from "../../domain/data/moon-phase";
 import { Home } from "./Home";
 
 describe("Home", () => {
   const mockUser = { displayName: "Alfred" };
-  const mockMoonData = { illuminated: 38, phase: "full" };
+  const mockMoonData = { illuminated: 38, phase: MoonPhase.FullMoon, journalPrompt: JournalPrompt.FullMoon };
   it("should render", async () => {
     render(<Home moonData={mockMoonData} user={mockUser} />);
 
