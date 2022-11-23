@@ -1,0 +1,9 @@
+.ritualsContainer {
+  margin-left: 25%;
+}
+
+@media screen and (max-width: 600px) {
+  .ritualsContainer{
+    margin-left: -12px;
+  }
+}

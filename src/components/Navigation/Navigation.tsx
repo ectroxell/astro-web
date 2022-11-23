@@ -15,7 +15,9 @@ import { app } from "../../firebase/firebase";
 import { Journal } from "../../domain/types/Journal";
 import { getJournalsByUserId } from "../../domain/data/journals";
 import { MoonData } from "../../domain/types/MoonData";
-import { fetchMoonData } from "../../domain/data/moon-phase";
+import { fetchMoonData } from "../../domain/data/get-moon-phase";
+import { Rituals } from "../Rituals/Rituals";
+import { Learn } from "../Learn/Learn";
 
 export const NavigationBar: FunctionComponent = () => {
   const auth = getAuth(app);
@@ -41,7 +43,7 @@ export const NavigationBar: FunctionComponent = () => {
         <nav>
           <ul className="navLinksContainer titleText">
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/journal">Journal</Link>
@@ -57,7 +59,7 @@ export const NavigationBar: FunctionComponent = () => {
 
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={<Home moonData={moonData} user={user} />}
           />
           <Route
@@ -67,17 +69,14 @@ export const NavigationBar: FunctionComponent = () => {
                 journals={journals}
                 user={user}
                 currentMoonPhase={moonData.phase}
+                journalPrompt={moonData.journalPrompt}
                 updateJournals={setJournals}
               />
             }
           />
-          {/* <Route path="/rituals">
-            <Rituals />
-          </Route>
-          <Route path="/learn">
-            <Learn />
-          </Route> */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="/rituals" element={<Rituals/>}/>
+          <Route path="/learn" element={<Learn/>}/>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>

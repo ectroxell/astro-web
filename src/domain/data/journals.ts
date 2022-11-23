@@ -14,6 +14,7 @@ export const getJournalsByUserId = async (userId: string) => {
       text: journalDoc.text,
       userId: journalDoc.userId,
       id: journalDoc.id,
+      journalPrompt: journalDoc.journalPrompt ?? null,
     };
     journals.push(journal);
   });

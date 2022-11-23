@@ -1,0 +1,9 @@
+.learnContainer {
+  margin-left: 25%;
+}
+
+@media screen and (max-width: 600px) {
+  .learnContainer{
+    margin-left: -12px;
+  }
+}

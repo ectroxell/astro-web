@@ -1,4 +1,6 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
+import { JournalPrompt } from "../../domain/data/journal-prompts";
+import { MoonPhase } from "../../domain/data/moon-phase";
 import { Journal } from "../../domain/types/Journal";
 import { JournalPage } from "./Journal";
 
@@ -12,9 +14,17 @@ describe("JournalPage", () => {
       id: "1",
       userId: "12",
     },
+    {
+      text: "this is my journal with a prompt",
+      date: new Date(),
+      moonPhase: "full",
+      id: "2",
+      userId: "123",
+      journalPrompt: JournalPrompt.FullMoon,
+    },
   ];
   const emptyJournal: Journal[] = [];
-  const moonPhase: string = "full moon";
+  const moonPhase: MoonPhase = MoonPhase.FullMoon;
 
   const mockUpdateJournals = jest
     .fn()
@@ -32,7 +42,7 @@ describe("JournalPage", () => {
     };
   });
 
-  it("should render header journals for signed in user with journal entries", () => {
+  it("should render header for signed in user with journal entries", () => {
     render(
       <JournalPage
         user={user}
@@ -43,7 +53,7 @@ describe("JournalPage", () => {
     );
 
     expect(
-      screen.getByText(`${user.displayName}'s Moon Journal 🌙`)
+      screen.getByText(`${user.displayName}'s Moon Journal`)
     ).toBeInTheDocument();
     expect(screen.getByText(journals[0].text)).toBeInTheDocument();
   });
@@ -60,7 +70,7 @@ describe("JournalPage", () => {
 
     expect(
       screen.getByText(
-        "You do not have any journal entries. Create your first journal entry here!"
+        "You do not have any journal entries. Create your first journal entry now!"
       )
     ).toBeInTheDocument();
   });
@@ -80,7 +90,7 @@ describe("JournalPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("should open modal when create new entry button is clicked and close when X button is clicked", () => {
+  it("should render journal prompt if not null", () => {
     render(
       <JournalPage
         user={user}
@@ -90,46 +100,78 @@ describe("JournalPage", () => {
       />
     );
 
-    expect(screen.getByText("New Journal Entry")).not.toBeVisible();
-
-    const newEntryButton = screen.getByRole("button", { name: "New Entry" });
-    fireEvent.click(newEntryButton);
-
-    expect(screen.getByText("New Journal Entry")).toBeVisible();
-
-    const closeButton = screen.getByText("+");
-    fireEvent.click(closeButton);
-
-    expect(screen.getByText("New Journal Entry")).not.toBeVisible();
+    expect(screen.getByText(JournalPrompt.FullMoon)).toBeInTheDocument();
   });
 
-  it.skip("should add new journal and close modal when submit button is pressed", async () => {
-    render(
-      <JournalPage
-        user={user}
-        journals={journals}
-        currentMoonPhase={moonPhase}
-        updateJournals={mockUpdateJournals}
-      />
-    );
-    const journalText = "this is my newest journal entry";
+  describe("New Entry Modal", () => {
+    it("should open modal when create new entry button is clicked and close when X button is clicked", () => {
+      render(
+        <JournalPage
+          user={user}
+          journals={journals}
+          currentMoonPhase={moonPhase}
+          updateJournals={mockUpdateJournals}
+        />
+      );
 
-    expect(screen.getByText("New Journal Entry")).not.toBeVisible();
+      expect(screen.getByText("New Journal Entry")).not.toBeVisible();
 
-    const newEntryButton = screen.getByRole("button", { name: "New Entry" });
-    fireEvent.click(newEntryButton);
+      const newEntryButton = screen.getByRole("button", { name: "New Entry" });
+      fireEvent.click(newEntryButton);
 
-    expect(screen.getByText("New Journal Entry")).toBeVisible();
+      expect(screen.getByText("New Journal Entry")).toBeVisible();
 
-    const inputBox = screen.getByRole("textbox");
-    const submitButton = screen.getByRole("button", { name: "Submit" });
-    fireEvent.click(inputBox);
-    fireEvent.change(inputBox, { target: { value: journalText } });
-    fireEvent.click(submitButton);
+      const closeButton = screen.getByText("+");
+      fireEvent.click(closeButton);
 
-    await waitFor(async () => {
-      expect(await screen.findByText("New Journal Entry")).not.toBeVisible();
+      expect(screen.getByText("New Journal Entry")).not.toBeVisible();
     });
-    expect(await screen.findByText(journalText)).toBeInTheDocument();
+
+    it("should show journal prompt based on current moon phase", () => {
+      render(
+        <JournalPage
+          user={user}
+          journals={journals}
+          currentMoonPhase={moonPhase}
+          updateJournals={mockUpdateJournals}
+          journalPrompt={JournalPrompt.FirstQuarter}
+        />
+      );
+
+      const newEntryButton = screen.getByRole("button", { name: "New Entry" });
+      fireEvent.click(newEntryButton);
+
+      expect(screen.getByText(JournalPrompt.FirstQuarter)).toBeInTheDocument();
+    });
+
+    it.skip("should add new journal and close modal when submit button is pressed", async () => {
+      render(
+        <JournalPage
+          user={user}
+          journals={journals}
+          currentMoonPhase={moonPhase}
+          updateJournals={mockUpdateJournals}
+        />
+      );
+      const journalText = "this is my newest journal entry";
+
+      expect(screen.getByText("New Journal Entry")).not.toBeVisible();
+
+      const newEntryButton = screen.getByRole("button", { name: "New Entry" });
+      fireEvent.click(newEntryButton);
+
+      expect(screen.getByText("New Journal Entry")).toBeVisible();
+
+      const inputBox = screen.getByRole("textbox");
+      const submitButton = screen.getByRole("button", { name: "Submit" });
+      fireEvent.click(inputBox);
+      fireEvent.change(inputBox, { target: { value: journalText } });
+      fireEvent.click(submitButton);
+
+      await waitFor(async () => {
+        expect(await screen.findByText("New Journal Entry")).not.toBeVisible();
+      });
+      expect(await screen.findByText(journalText)).toBeInTheDocument();
+    });
   });
 });
