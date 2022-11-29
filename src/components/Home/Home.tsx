@@ -68,7 +68,7 @@ export const Home: FunctionComponent<HomeProps> = (props: HomeProps) => {
             </button>
           </div>
           {isLogin && <Login />}
-          {isSignUp && <SignUp />}
+          {isSignUp && <SignUp hideForm={() => setIsSignUp(false)}/>}
         </div>
       </div>
     </>

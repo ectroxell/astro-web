@@ -1,10 +1,14 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { app } from "../../firebase/firebase";
 import "./signup.scss";
 
-export const SignUp = () => {
+type SignUpProps = {
+  hideForm: () => void;
+}
+
+export const SignUp: FunctionComponent<SignUpProps> = (props: SignUpProps) => {
   const auth = getAuth(app);
 
   const [email, setEmail] = useState("");
@@ -20,6 +24,7 @@ export const SignUp = () => {
         return updateProfile(user, { displayName });
       }
     });
+    props.hideForm();
     e.preventDefault();
   };
   return (
@@ -36,6 +41,7 @@ export const SignUp = () => {
               onChange={(e) => setEmail(e.target.value)}
               name="email"
               type="email"
+              data-testid="email"
             />
           </div>
           <div className="password text">
@@ -44,6 +50,7 @@ export const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
               name="password"
               type="password"
+              data-testid="password"
             />
           </div>
           <div className="displayName text">
@@ -52,6 +59,7 @@ export const SignUp = () => {
               onChange={(e) => setDisplayName(e.target.value)}
               name="displayName"
               type="text"
+              data-testid="displayName"
             />
           </div>
           <div className="createAccountButton">
