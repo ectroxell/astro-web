@@ -13,8 +13,6 @@ export const fetchMoonData = () => {
     phase,
     journalPrompt,
   };
-  console.log({ rawMoonData });
-  console.log({ moonData });
   return moonData;
 };
 
