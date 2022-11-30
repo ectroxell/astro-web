@@ -1,19 +1,24 @@
 .learnContentContainer {
-  margin: 10% 4%;
+  margin: 10% 0%;
+  margin-right: 7%;
+  h3 {
+    text-align: center;
+  }
+  p {
+    font-size: 20px;
+  }
+  .shortDesc {
+    font-style: italic;
+    margin-bottom: 24px;
+    font-size: 22px;
+  }
+
+  .contentBody {
+    margin: 0% 15%
+  }
 }
 
-.shortDesc {
-  font-style: italic;
-  margin-bottom: 12px;;
-}
 
-h3 {
-  text-align: center;
-}
-
-p {
-  font-size: 22px;
-}
 
 @media screen and (max-width: 600px) {
   .learnContentContainer {
