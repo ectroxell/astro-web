@@ -5,7 +5,7 @@ import "./learnContent.scss";
 type LearnContentProps = {
   moonPhase: MoonPhase;
   shortDescription: string;
-  longDescription?: string;
+  longDescription: string;
   keywords: string;
 }
 

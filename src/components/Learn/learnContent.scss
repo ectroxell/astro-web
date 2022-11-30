@@ -1,9 +1,10 @@
 .learnContentContainer {
-  margin: 10% 7%;
+  margin: 10% 4%;
 }
 
 .shortDesc {
   font-style: italic;
+  margin-bottom: 12px;;
 }
 
 h3 {
@@ -12,4 +13,10 @@ h3 {
 
 p {
   font-size: 22px;
+}
+
+@media screen and (max-width: 600px) {
+  .learnContentContainer {
+    margin: 30% 7%;
+  }
 }

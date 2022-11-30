@@ -6,8 +6,7 @@ import "./phaseNavBar.scss";
 export const PhaseNavBar: FunctionComponent = () => {
   return (
       <nav>
-        <div className="linksContainer">
-          <ul>
+          <ul className="linksContainer">
             <li>
               <Link to="/learn/newMoon">{MoonPhase.NewMoon}</Link>
             </li>
@@ -33,7 +32,6 @@ export const PhaseNavBar: FunctionComponent = () => {
               <Link to="/learn/waningCrescent">{MoonPhase.WaningCrescent}</Link>
             </li>
           </ul>
-        </div>
       </nav>
   );
 };
