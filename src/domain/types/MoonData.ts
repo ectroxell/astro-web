@@ -6,6 +6,6 @@ export type MoonData = {
   phase: MoonPhase;
   journalPrompt: JournalPrompt;
   shortDescription: string;
-  longDescription?: string;
+  longDescription: string;
   keywords: string;
 };

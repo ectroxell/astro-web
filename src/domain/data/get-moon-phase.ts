@@ -68,6 +68,8 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       phase,
       journalPrompt: JournalPrompt.WaxingCrescent,
       shortDescription: "Get excited about new possibilites.",
+      longDescription:
+        "The waxing crescent moon phase is when we first see the new moon illuminated by the sun. This is a clear example of a shift and change, and this moon phase also presents us with an opportunity to create change in our own lives. For many, that’s what this moon phase is all about and what it represents. It’s important to consider what you’re working towards in life and become more aware of the opportunities that might arise around you during this time. Allow yourself to be bolder and make the most of the opportunities in front of you.",
       keywords: "Be curious",
     };
   } else if (phase === MoonPhase.WaningGibbous) {
@@ -75,6 +77,8 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       phase,
       journalPrompt: JournalPrompt.WaningGibbous,
       shortDescription: "Reflect and teach others what you've learned.",
+      longDescription:
+        "After the moon has had maximum illumination, the light slowly starts to decrease in the waning gibbous phase. Spiritually, it is time to get rid of some of those bad habits, stresses, and any negative thinking that you have been experiencing. Now is the time to focus on effectively communicating with others, and revealing that in which you have been keeping in.",
       keywords: "Share",
     };
   } else if (phase === MoonPhase.WaxingGibbous) {
@@ -82,6 +86,8 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       phase,
       journalPrompt: JournalPrompt.WaxingGibbous,
       shortDescription: "Refine and make improvements.",
+      longDescription:
+        "The waxing gibbous moon is an opportunity for you to become more mindful in what you are doing, paying that little extra bit of attention to your circumstances. It’s a time to reflect on what’s working for you right now, and what might need to change. Ultimately, the waxing gibbous moon is a period for you to work hard and get to where you want to be in your life. It’s part of the ebb and flow of nature - a time for putting in the effort before you can enjoy your creations and relax.",
       keywords: "Improve",
     };
   } else {

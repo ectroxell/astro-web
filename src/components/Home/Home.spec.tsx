@@ -11,6 +11,7 @@ describe("Home", () => {
     journalPrompt: JournalPrompt.FullMoon,
     keywords: "celebrate",
     shortDescription: "time to reflect",
+    longDescription: "an even longer description",
   };
   it("should render", async () => {
     render(<Home moonData={mockMoonData} user={mockUser} />);
