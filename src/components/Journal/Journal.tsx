@@ -113,17 +113,20 @@ export const JournalPage: FunctionComponent<JournalProps> = (
   }
 
   return (
-    <>
+    <div className="journalPageContainer">
       <NewJournalModal
         isModalOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
+        closeModal={() => {
+          setNewJournalText("");
+          setIsModalOpen(false);
+        }}
         handleSubmit={handleSubmit}
         currentMoonPhase={props.currentMoonPhase}
         journalPrompt={props.journalPrompt}
         journalText={newJournalText}
         onChange={setNewJournalText}
       />
-      <div className="journalPageContainer">
+      <div className="journalPageContent">
         <div className="titleText journalHeader">
           <span>{props.user.displayName}'s Moon Journal</span>
           <button className="text" onClick={() => setIsModalOpen(true)}>
@@ -151,6 +154,6 @@ export const JournalPage: FunctionComponent<JournalProps> = (
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
