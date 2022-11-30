@@ -11,17 +11,16 @@ nav {
   align-items: center;
   list-style: none;
   height: 100%;
-
+  margin-left: 17%;
   li {
     margin: 12px;
-    font-weight: 700;
     border: #7364c4 solid 1px;
     border-radius: 4px;
-    padding: 4px;
+    padding: 8px;
 
     &:hover {
       background-color: darkslateblue;
-
+      cursor: pointer;
       a {
         color: white;
       }
