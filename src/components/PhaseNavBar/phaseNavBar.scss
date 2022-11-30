@@ -1,0 +1,43 @@
+nav {
+  margin-bottom: 55px;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 230px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+  }
+  li {
+    margin: 12px;
+    font-weight: 700;
+    a {
+      color: #7364c4;
+      font-size: 20px;
+      text-decoration: none;
+      &:hover {
+        color: darkslateblue;
+      }
+    } 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .linksContainer {
+    flex-direction: row;
+    position: absolute;
+    top: 8px;
+    margin-left: -7%;
+    li a {
+      font-size: 18px;
+      margin: 10px;
+    }
+  }
+}

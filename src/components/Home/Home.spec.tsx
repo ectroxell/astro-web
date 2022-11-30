@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { debug } from "console";
 import { JournalPrompt } from "../../domain/data/journal-prompts";
 import { MoonPhase } from "../../domain/data/moon-phase";
 import { Home } from "./Home";
@@ -10,6 +9,8 @@ describe("Home", () => {
     illuminated: 38,
     phase: MoonPhase.FullMoon,
     journalPrompt: JournalPrompt.FullMoon,
+    keywords: "celebrate",
+    shortDescription: "time to reflect",
   };
   it("should render", async () => {
     render(<Home moonData={mockMoonData} user={mockUser} />);
@@ -42,7 +43,7 @@ describe("Home", () => {
     fireEvent.change(emailInput, {target: {value: "email@email.com"}});
 
     fireEvent.click(passwordInput);
-    fireEvent.change(passwordInput, {target: {value: "password"}});
+    fireEvent.change(passwordInput, {target: {value: "password123"}});
 
     fireEvent.click(nameInput);
     fireEvent.change(nameInput, {target: {value: "Delilah"}});
