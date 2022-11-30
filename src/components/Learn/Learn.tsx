@@ -1,11 +1,23 @@
 import { FunctionComponent } from "react";
-import './learn.scss';
+import { MoonData } from "../../domain/types/MoonData";
+import { PhaseNavBar } from "../PhaseNavBar/PhaseNavBar";
+import "./learn.scss";
+import { LearnContent } from "./LearnContent";
 
-export const Learn: FunctionComponent = () => {
+type LearnProps = {
+  moonData: MoonData;
+};
+
+export const Learn: FunctionComponent<LearnProps> = (props: LearnProps) => {
   return (
     <div className="text learnContainer">
-      <p>🚧 This feature is under construction 🛠</p>
-      <p>Come back soon!</p>
+      <PhaseNavBar />
+      <LearnContent
+        moonPhase={props.moonData.phase}
+        shortDescription={props.moonData.shortDescription}
+        longDescription={props.moonData.longDescription}
+        keywords={props.moonData.keywords}
+      />
     </div>
-  )
-}
+  );
+};
