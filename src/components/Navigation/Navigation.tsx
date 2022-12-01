@@ -59,14 +59,14 @@ export const NavigationBar: FunctionComponent = () => {
             <li>
               <Link to="/learn">Learn</Link>
             </li>
+            {user ? (
+              <li className="profileLink">
+                <Link to="/profile">
+                  <ProfileIcon width={"50pt"} height={"35pt"} />
+                </Link>
+              </li>
+            ) : null}
           </ul>
-          {user ? (
-            <div className="profileLink">
-              <Link to="/profile">
-                <ProfileIcon width={"45pt"} height={"45pt"} />
-              </Link>
-            </div>
-          ) : null}
         </nav>
 
         <Routes>
