@@ -9,19 +9,23 @@
   padding: 12px;
   border: #E1E1E6 solid 1px;
   border-radius: 4px;
+  width: 100%;
 }
 
 .textContainer {
-  margin-left: 25%;
+  margin-left: 28.5%;
 }
 
 .journalHeader {
-  font-size: 28px;
-  margin-bottom: 34px;
+  font-size: 26px;
+  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 7.5%;
+  margin-right: 7%;
+  span {
+    margin-bottom: 8px;
+  }
 }
 
 .journalPageContainer {
@@ -32,7 +36,8 @@
 .journalPageContent {
   position: absolute;
   top: 86px;
-  margin: 0% 7%;
+  margin: 0% 7% 0% 11%;
+  width: 64%
 }
 
 .journalTitle {
@@ -57,7 +62,7 @@
 
 .modalContent {
   width: 50%;
-  height: 40%;
+  height: 45%;
   background-color: lavender;
   border-radius: 4px;
   text-align: center;
