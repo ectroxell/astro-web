@@ -2,6 +2,7 @@ import { MoonData } from "../types/MoonData";
 import SunCalc from "suncalc";
 import { JournalPrompt } from "../types/JournalPrompts";
 import { MoonPhase } from "../types/MoonPhases";
+import { Emoji } from "../types/MoonEmojis";
 
 export const fetchCurrentMoonData = () => {
   const date = new Date();
@@ -28,6 +29,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "Go through your previous new moon intentions and write the ones that you are still hoping to fulfill on a fresh sheet of paper, along with this month's new moon intentions. Give your wishes to the moon. Write a letter to the moon telling her all about your hopes, dreams, goals, and intentions. Don't forget to say thank you!",
       ],
+      emoji: Emoji.NewMoon,
     };
   } else if (phase === MoonPhase.FirstQuarter) {
     moonData = {
@@ -40,6 +42,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "Say your intentions aloud while looking in the mirror. Imagine that you've achieved them. Create a feeling of gratitude as an energetic match for your intentions.",
       ],
+      emoji: Emoji.FirstQuarter,
     };
   } else if (phase === MoonPhase.FullMoon) {
     moonData = {
@@ -55,6 +58,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
         "Meditate on your affirmations.",
         "Meditate on what you will let go of in the next moon cycle.",
       ],
+      emoji: Emoji.FullMoon,
     };
   } else if (phase === MoonPhase.LastQuarter) {
     moonData = {
@@ -67,6 +71,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "On a piece of paper, write down what you are ready to release. Burn the paper in a safe way. Say aloud what you are releasing as you watch the paper burn. When the paper has finished burning, breathe in a cleansing breath and smile.",
       ],
+      emoji: Emoji.LastQuarter,
     };
   } else if (phase === MoonPhase.WaningCrescent) {
     moonData = {
@@ -80,6 +85,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "Light a candle and spend a few minutes grounding yourself by meditatiing or deep breathing. Light a smoke wand with the candle and slowly walk around your house. Start at the front door and move in a clockwise direction. As you enter each room, open all the doors and windows. Gently wave the smoke wand, allowing the smoke to get into the corners of each room. Focus your intention on driving out negative energy.",
       ],
+      emoji: Emoji.WaningCrescent,
     };
   } else if (phase === MoonPhase.WaxingCrescent) {
     moonData = {
@@ -92,6 +98,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "It is a time for action, so go through your intentions and write down a list of practical goals that will lead you to manifesting each one. If you are unsure of where to begin, use an oracle or tarot card deck to help guide your energy.",
       ],
+      emoji: Emoji.WaxingCrescent,
     };
   } else if (phase === MoonPhase.WaningGibbous) {
     moonData = {
@@ -104,6 +111,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "Your insight will be heightened, so it's a powerful time for both shadow work and divination. Use the waning moon oracle card spread for guidance on what needs to be released in your life.",
       ],
+      emoji: Emoji.WaningGibbous,
     };
   } else if (phase === MoonPhase.WaxingGibbous) {
     moonData = {
@@ -116,6 +124,7 @@ export const getMoonDataByPhase = (phase: MoonPhase) => {
       rituals: [
         "Restorative activities are what your body, mind, and heart need during this lunar phase. This includes doing things for self-confidence, like saying affirmations, focusing on healing, or doing meditations.",
       ],
+      emoji: Emoji.WaxingGibbous
     };
   } else {
     throw new Error("Invalid value");
