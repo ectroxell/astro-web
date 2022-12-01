@@ -1,15 +1,15 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from "react";
 
 type IconProps = {
   width: string;
   height: string;
-}
+};
 const MoonIcon: FunctionComponent<IconProps> = (props: IconProps) => {
   return (
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width= {props.width || "320pt"}
+      width={props.width || "320pt"}
       height={props.height || "320pt"}
       viewBox="0 0 1280.000000 1277.000000"
       preserveAspectRatio="xMidYMid meet"
@@ -33,7 +33,7 @@ const MoonIcon: FunctionComponent<IconProps> = (props: IconProps) => {
         />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default MoonIcon
+export default MoonIcon;
