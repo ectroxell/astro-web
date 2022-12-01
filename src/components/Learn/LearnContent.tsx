@@ -15,8 +15,10 @@ export const LearnContent: FunctionComponent<LearnContentProps> = (props: LearnC
       <div className="contentHeader titleText">
         <h3>{props.moonPhase}: {props.keywords}</h3>
       </div>
+      <div className="contentBody">
         <p className="text shortDesc">{props.shortDescription}</p>
-        <p className="text">{props.longDescription}</p>
+        <p className="text longDesc">{props.longDescription}</p>
+      </div>
     </div>
   )
 }
