@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { JournalPrompt } from "../../domain/data/journal-prompts";
-import { MoonPhase } from "../../domain/data/moon-phase";
+import { JournalPrompt } from "../../domain/types/JournalPrompts";
+import { MoonPhase } from "../../domain/types/MoonPhases";
 import { Journal } from "../../domain/types/Journal";
 import { JournalPage } from "./Journal";
 

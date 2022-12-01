@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { JournalPrompt } from "../../domain/data/journal-prompts";
-import { MoonPhase } from "../../domain/data/moon-phase";
+import { JournalPrompt } from "../../domain/types/JournalPrompts";
+import { MoonPhase } from "../../domain/types/MoonPhases";
 import { Home } from "./Home";
 
 describe("Home", () => {
@@ -12,6 +12,7 @@ describe("Home", () => {
     keywords: "celebrate",
     shortDescription: "time to reflect",
     longDescription: "an even longer description",
+    rituals: ["ritual"]
   };
   it("should render", async () => {
     render(<Home moonData={mockMoonData} user={mockUser} />);
@@ -38,16 +39,18 @@ describe("Home", () => {
     const emailInput = screen.getByTestId("email");
     const passwordInput = screen.getByTestId("password");
     const nameInput = screen.getByTestId("displayName");
-    const createAccountButton = screen.getByRole("button", {name: "Create Account"});
+    const createAccountButton = screen.getByRole("button", {
+      name: "Create Account",
+    });
 
     fireEvent.click(emailInput);
-    fireEvent.change(emailInput, {target: {value: "email@email.com"}});
+    fireEvent.change(emailInput, { target: { value: "email@email.com" } });
 
     fireEvent.click(passwordInput);
-    fireEvent.change(passwordInput, {target: {value: "password123"}});
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
 
     fireEvent.click(nameInput);
-    fireEvent.change(nameInput, {target: {value: "Delilah"}});
+    fireEvent.change(nameInput, { target: { value: "Delilah" } });
 
     fireEvent.click(createAccountButton);
     expect(createAccountButton).not.toBeVisible();

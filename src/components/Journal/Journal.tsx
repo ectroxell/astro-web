@@ -3,7 +3,7 @@ import { Journal } from "../../domain/types/Journal";
 import { createNewJournal } from "../../domain/data/journals";
 import { v4 as uuidv4 } from "uuid";
 import "./journal.scss";
-import { JournalPrompt } from "../../domain/data/journal-prompts";
+import { JournalPrompt } from "../../domain/types/JournalPrompts";
 
 type JournalProps = {
   journals: Journal[];

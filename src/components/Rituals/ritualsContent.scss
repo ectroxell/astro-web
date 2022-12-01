@@ -1,0 +1,19 @@
+.ritualsContentContainer {
+  margin: 10% 0%;
+  margin-right: 7%;
+  h3 {
+    text-align: center;
+  }
+
+  .contentBody {
+    margin: 0% 15%
+  }
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .ritualsContentContainer {
+    margin: 30% 7%;
+  }
+}
