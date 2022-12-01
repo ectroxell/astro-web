@@ -15,10 +15,13 @@ import { app } from "../../firebase/firebase";
 import { Journal } from "../../domain/types/Journal";
 import { getJournalsByUserId } from "../../domain/data/journals";
 import { MoonData } from "../../domain/types/MoonData";
-import { fetchCurrentMoonData, getMoonDataByPhase } from "../../domain/data/get-moon-phase";
+import {
+  fetchCurrentMoonData,
+  getMoonDataByPhase,
+} from "../../domain/data/getMoonData";
 import { Rituals } from "../Rituals/Rituals";
 import { Learn } from "../Learn/Learn";
-import { MoonPhase } from "../../domain/data/moon-phase";
+import { MoonPhase } from "../../domain/types/MoonPhases";
 
 export const NavigationBar: FunctionComponent = () => {
   const auth = getAuth(app);
@@ -59,7 +62,10 @@ export const NavigationBar: FunctionComponent = () => {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Home moonData={currentMoonData} user={user} />} />
+          <Route
+            path="/"
+            element={<Home moonData={currentMoonData} user={user} />}
+          />
           <Route
             path="/journal"
             element={
@@ -72,16 +78,102 @@ export const NavigationBar: FunctionComponent = () => {
               />
             }
           />
-          <Route path="/rituals" element={<Rituals />} />
+          <Route path="/rituals" element={<Rituals moonData={currentMoonData} />} />
           <Route path="/learn" element={<Learn moonData={currentMoonData} />} />
-          <Route path="/learn/newMoon" element={<Learn moonData={getMoonDataByPhase(MoonPhase.NewMoon)} />} />
-          <Route path="/learn/waxingCrescent" element={<Learn moonData={getMoonDataByPhase(MoonPhase.WaxingCrescent)} />} />
-          <Route path="/learn/firstQuarter" element={<Learn moonData={getMoonDataByPhase(MoonPhase.FirstQuarter)} />} />
-          <Route path="/learn/waxingGibbous" element={<Learn moonData={getMoonDataByPhase(MoonPhase.WaxingGibbous)} />} />
-          <Route path="/learn/fullMoon" element={<Learn moonData={getMoonDataByPhase(MoonPhase.FullMoon)} />} />
-          <Route path="/learn/waningGibbous" element={<Learn moonData={getMoonDataByPhase(MoonPhase.WaningGibbous)} />} />
-          <Route path="/learn/lastQuarter" element={<Learn moonData={getMoonDataByPhase(MoonPhase.LastQuarter)} />} />
-          <Route path="/learn/waningCrescent" element={<Learn moonData={getMoonDataByPhase(MoonPhase.WaningCrescent)} />} />
+          <Route
+            path="/learn/newMoon"
+            element={<Learn moonData={getMoonDataByPhase(MoonPhase.NewMoon)} />}
+          />
+          <Route
+            path="/learn/waxingCrescent"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.WaxingCrescent)} />
+            }
+          />
+          <Route
+            path="/learn/firstQuarter"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.FirstQuarter)} />
+            }
+          />
+          <Route
+            path="/learn/waxingGibbous"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.WaxingGibbous)} />
+            }
+          />
+          <Route
+            path="/learn/fullMoon"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.FullMoon)} />
+            }
+          />
+          <Route
+            path="/learn/waningGibbous"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.WaningGibbous)} />
+            }
+          />
+          <Route
+            path="/learn/lastQuarter"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.LastQuarter)} />
+            }
+          />
+          <Route
+            path="/learn/waningCrescent"
+            element={
+              <Learn moonData={getMoonDataByPhase(MoonPhase.WaningCrescent)} />
+            }
+          />
+          <Route
+            path="/rituals/newMoon"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.NewMoon)} />
+            }
+          />
+          <Route
+            path="/rituals/waxingCrescent"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaxingCrescent)} />
+            }
+          />
+          <Route
+            path="/rituals/firstQuarter"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.FirstQuarter)} />
+            }
+          />
+          <Route
+            path="/rituals/waxingGibbous"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaxingGibbous)} />
+            }
+          />
+          <Route
+            path="/rituals/fullMoon"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.FullMoon)} />
+            }
+          />
+          <Route
+            path="/rituals/waningGibbous"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaningGibbous)} />
+            }
+          />
+          <Route
+            path="/rituals/lastQuarter"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.LastQuarter)} />
+            }
+          />
+          <Route
+            path="/rituals/waningCrescent"
+            element={
+              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaningCrescent)} />
+            }
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
