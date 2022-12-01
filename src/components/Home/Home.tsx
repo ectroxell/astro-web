@@ -5,7 +5,7 @@ import { Login } from "../Login/Login";
 import { SignUp } from "../SignUp/SignUp";
 import "./home.scss";
 import "../../index.scss";
-import MoonIcon from "../assets/icons/Moon";
+import MoonIcon from "../../assets/icons/Moon";
 import { MoonData } from "../../domain/types/MoonData";
 
 type HomeProps = {
