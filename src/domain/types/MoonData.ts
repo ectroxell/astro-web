@@ -1,5 +1,6 @@
 import { JournalPrompt } from "./JournalPrompts";
 import { MoonPhase } from "./MoonPhases";
+import { Emoji } from "./MoonEmojis";
 
 export type MoonData = {
   illuminated?: number;
@@ -9,4 +10,5 @@ export type MoonData = {
   longDescription: string;
   keywords: string;
   rituals: string[];
+  emoji: Emoji;
 };

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { JournalPrompt } from "../../domain/types/JournalPrompts";
+import { Emoji } from "../../domain/types/MoonEmojis";
 import { MoonPhase } from "../../domain/types/MoonPhases";
 import { Home } from "./Home";
 
@@ -12,7 +13,8 @@ describe("Home", () => {
     keywords: "celebrate",
     shortDescription: "time to reflect",
     longDescription: "an even longer description",
-    rituals: ["ritual"]
+    rituals: ["ritual"],
+    emoji: Emoji.FullMoon,
   };
   it("should render", async () => {
     render(<Home moonData={mockMoonData} user={mockUser} />);

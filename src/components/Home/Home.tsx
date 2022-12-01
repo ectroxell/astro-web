@@ -20,7 +20,7 @@ export const Home: FunctionComponent<HomeProps> = (props: HomeProps) => {
   const logout = () => {
     signOut(auth);
   };
-  
+
   return (
     <>
       <div className="homeWrapper">
@@ -36,7 +36,7 @@ export const Home: FunctionComponent<HomeProps> = (props: HomeProps) => {
             {props.moonData ? (
               <p>
                 The moon is {props.moonData.illuminated}% illuminated and in the{" "}
-                {props.moonData.phase} phase.
+                {props.moonData.phase} phase {props.moonData.emoji}
               </p>
             ) : null}
             {props.user ? <button onClick={logout}>Log out</button> : null}
@@ -68,7 +68,7 @@ export const Home: FunctionComponent<HomeProps> = (props: HomeProps) => {
             </button>
           </div>
           {isLogin && <Login />}
-          {isSignUp && <SignUp hideForm={() => setIsSignUp(false)}/>}
+          {isSignUp && <SignUp hideForm={() => setIsSignUp(false)} />}
         </div>
       </div>
     </>

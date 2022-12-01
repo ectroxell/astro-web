@@ -1,16 +1,24 @@
 .learnContentContainer {
-  margin: 10% 0%;
-  margin-right: 7%;
+  margin: 10%;
+  border: darkslateblue solid 1px;
+  border-radius: 4px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 65%;
+  background-color: lavender;
   h3 {
     text-align: center;
+    margin-top: 10%;
   }
   .longDesc {
-    font-size: 20px;
+    font-size: 18px;
   }
   .shortDesc {
     font-style: italic;
     margin-bottom: 24px;
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .contentBody {
@@ -22,6 +30,8 @@
 
 @media screen and (max-width: 600px) {
   .learnContentContainer {
-    margin: 30% 7%;
+    margin: 50% 6.5%;
+    height: 80%;
+    width: 80%;
   }
 }
