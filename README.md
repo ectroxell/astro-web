@@ -1,6 +1,10 @@
 # Welcome to Moonology ✨
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 0.0.3 Release notes:
+- Clear journal entry text when modal is closed
+- Hide sign up form after creating account
+- Create Learn page
 
 ## 0.0.3 Release notes:
 - Clear journal entry text when modal is closed
