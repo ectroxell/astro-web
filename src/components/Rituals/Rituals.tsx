@@ -15,6 +15,7 @@ export const Rituals: FunctionComponent<RitualsProps> = (props: RitualsProps) =>
       <RitualsContent
         moonPhase={props.moonData.phase}
         rituals={props.moonData.rituals}
+        emoji={props.moonData.emoji}
       />
     </div>
   )
