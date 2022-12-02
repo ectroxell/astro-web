@@ -22,6 +22,7 @@ import {
 import { Rituals } from "../Rituals/Rituals";
 import { Learn } from "../Learn/Learn";
 import { MoonPhase } from "../../domain/types/MoonPhases";
+import ProfileIcon from "../../assets/icons/ProfileIcon";
 
 export const NavigationBar: FunctionComponent = () => {
   const auth = getAuth(app);
@@ -44,8 +45,8 @@ export const NavigationBar: FunctionComponent = () => {
   return (
     <Router>
       <div className="container">
-        <nav>
-          <ul className="navLinksContainer titleText">
+        <nav className="navLinksContainer">
+          <ul className="titleText">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -58,6 +59,13 @@ export const NavigationBar: FunctionComponent = () => {
             <li>
               <Link to="/learn">Learn</Link>
             </li>
+            {user ? (
+              <li className="profileLink">
+                <Link to="/profile">
+                  <ProfileIcon width={"50pt"} height={"35pt"} />
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
 
@@ -78,7 +86,10 @@ export const NavigationBar: FunctionComponent = () => {
               />
             }
           />
-          <Route path="/rituals" element={<Rituals moonData={currentMoonData} />} />
+          <Route
+            path="/rituals"
+            element={<Rituals moonData={currentMoonData} />}
+          />
           <Route path="/learn" element={<Learn moonData={currentMoonData} />} />
           <Route
             path="/learn/newMoon"
@@ -135,7 +146,9 @@ export const NavigationBar: FunctionComponent = () => {
           <Route
             path="/rituals/waxingCrescent"
             element={
-              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaxingCrescent)} />
+              <Rituals
+                moonData={getMoonDataByPhase(MoonPhase.WaxingCrescent)}
+              />
             }
           />
           <Route
@@ -171,7 +184,9 @@ export const NavigationBar: FunctionComponent = () => {
           <Route
             path="/rituals/waningCrescent"
             element={
-              <Rituals moonData={getMoonDataByPhase(MoonPhase.WaningCrescent)} />
+              <Rituals
+                moonData={getMoonDataByPhase(MoonPhase.WaningCrescent)}
+              />
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
