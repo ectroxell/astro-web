@@ -1,4 +1,4 @@
-import { JournalPrompt } from "../data/journal-prompts";
+import { JournalPrompt } from "./JournalPrompts";
 
 export type Journal = {
   date: Date;

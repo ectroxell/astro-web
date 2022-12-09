@@ -1,4 +1,4 @@
-.learnContentContainer {
+.ritualsContentContainer {
   margin: 10%;
   border: darkslateblue solid 1px;
   border-radius: 4px;
@@ -8,28 +8,20 @@
   justify-content: flex-start;
   height: 65%;
   background-color: lavender;
-  h3 {
+  .contentHeader {
     text-align: center;
     margin-top: 10%;
   }
-  .longDesc {
-    font-size: 18px;
-  }
-  .shortDesc {
-    font-style: italic;
-    margin-bottom: 24px;
-    font-size: 20px;
+  .contentBody {
+    margin: 0% 10%;
   }
 
-  .contentBody {
-    margin: 0% 15%
-  }
 }
 
 
 
 @media screen and (max-width: 600px) {
-  .learnContentContainer {
+  .ritualsContentContainer {
     margin: 50% 6.5%;
     height: 80%;
     width: 80%;
