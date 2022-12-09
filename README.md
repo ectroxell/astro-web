@@ -1,6 +1,11 @@
 # Welcome to Moonology ✨
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## 0.0.4 Release notes:
+- Various styling updates to make the website more responsive and mobile friendly
+- Create Rituals page
+
 ## 0.0.3 Release notes:
 - Clear journal entry text when modal is closed
 - Hide sign up form after creating account
